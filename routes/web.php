@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [App\Http\Controllers\RestaurantController::class, 'index'])
+    ->name('root');
+
+Route::resource('restaurants', App\Http\Controllers\RestaurantController::class)
+    ->only(['index', 'show']);
