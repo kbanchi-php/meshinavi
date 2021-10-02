@@ -30,7 +30,8 @@ class RestaurantController extends Controller
         $category = $request->category;
 
         $params = $request->query();
-        $restaurants = Restaurant::search($params)->paginate(10);
+        // $restaurants = Restaurant::search($params)->paginate(10);
+        $restaurants = Restaurant::search($params)->paginate(5);
         $restaurants->appends(compact('name', 'category'));
 
         // dd($restaurants);

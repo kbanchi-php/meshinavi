@@ -32,7 +32,7 @@ class RestaurantController extends AdminController
         $grid->column('address', __('Address'));
         $grid->column('opentime', __('Opentime'));
         $grid->column('holiday', __('Holiday'));
-        $grid->column('category', __('Category'));
+        $grid->column('category_id', __('Category id'));
         $grid->column('note', __('Note'));
         $grid->column('pr_short', __('Pr short'));
         $grid->column('pr_long', __('Pr long'));
@@ -61,7 +61,7 @@ class RestaurantController extends AdminController
         $show->field('address', __('Address'));
         $show->field('opentime', __('Opentime'));
         $show->field('holiday', __('Holiday'));
-        $show->field('category', __('Category'));
+        $show->field('category_id', __('Category id'));
         $show->field('note', __('Note'));
         $show->field('pr_short', __('Pr short'));
         $show->field('pr_long', __('Pr long'));
@@ -88,7 +88,8 @@ class RestaurantController extends AdminController
         $form->text('address', __('Address'));
         $form->text('opentime', __('Opentime'));
         $form->text('holiday', __('Holiday'));
-        $form->text('category', __('Category'));
+        // $form->number('category_id', __('Category id'))->default(1);
+        $form->select('category_id', __('Category'))->options(\App\Models\Category::all()->pluck('name', 'id'));
         $form->text('note', __('Note'));
         $form->text('pr_short', __('Pr short'));
         $form->text('pr_long', __('Pr long'));
