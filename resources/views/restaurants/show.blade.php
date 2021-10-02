@@ -3,6 +3,7 @@
 @section('title', '詳細画面')
 
 @section('content')
+    @include('partial.restaurant')
     <table class="table-bordered mb-5 mt-3">
         <colgroup span="1" style="width:200px;background-color:#efefef;"></colgroup>
         <tbody>
@@ -31,5 +32,17 @@
             </tr>
         </tbody>
     </table>
+    <div id="map" style="height: 30vh"></div>
     <a href="{{ route('restaurants.index') }}">戻る</a>
+@endsection
+
+@section('script')
+    @include('partial.map')
+    <script>
+        L.marker([{{ $restaurant->latitude }}, {{ $restaurant->longitude }}])
+            .bindPopup("{{ $restaurant->name }}", {
+                closeButton: false
+            })
+            .addTo(map);
+    </script>
 @endsection

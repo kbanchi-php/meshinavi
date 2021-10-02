@@ -22,3 +22,6 @@ Route::get('/', [App\Http\Controllers\RestaurantController::class, 'index'])
 
 Route::resource('restaurants', App\Http\Controllers\RestaurantController::class)
     ->only(['index', 'show']);
+
+// Route::resource('restaurants', App\Http\Controllers\RestaurantController::class)
+//     ->except(['create', 'store', 'edit', 'update', 'destroy']);
