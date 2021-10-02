@@ -11,5 +11,8 @@
                 </li>
             @endforeach
         </ul>
+        <div class="d-flex justify-content-center">
+            {{ $restaurants->links() }}
+        </div>
     @endif
 @endsection
