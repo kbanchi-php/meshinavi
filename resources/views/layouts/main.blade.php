@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    @include('layouts.header')
+    @include('partial.header')
     <div class="container">
         @yield('content')
     </div>
