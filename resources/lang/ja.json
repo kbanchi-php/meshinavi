@@ -1,0 +1,15 @@
+{
+    "Name": "店名",
+    "Name Kana": "店名(かな)",
+    "Address": "場所",
+    "Opentime": "開店時刻",
+    "Holiday": "休日",
+    "Category": "カテゴリー",
+    "Note": "その他メモ",
+    "Pr short": "PRポイント(ショート)",
+    "Pr long": "PRポイント(ロング)",
+    "Img path": "画像",
+    "Latitude": "緯度",
+    "Longitude": "経度",
+    "Restaurant": "店名"
+}

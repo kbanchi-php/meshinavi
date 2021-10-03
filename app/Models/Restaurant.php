@@ -17,7 +17,7 @@ class Restaurant extends Model
         }
         if (!empty($params['category'])) {
             // $query->where('category', 'like', '%' . $params['category'] . '%');
-            $query->whereHas('Category', function ($q) use ($params) {
+            $query->whereHas('category', function ($q) use ($params) {
                 $q->where('name', 'like', '%' . $params['category'] . '%');
             });
         }
