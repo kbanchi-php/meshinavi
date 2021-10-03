@@ -21,7 +21,17 @@ Route::get('/', [App\Http\Controllers\RestaurantController::class, 'index'])
     ->name('root');
 
 Route::resource('restaurants', App\Http\Controllers\RestaurantController::class)
-    ->only(['index', 'show']);
+    ->only(['index']);
+
+Route::resource('restaurants', App\Http\Controllers\RestaurantController::class)
+    ->middleware(['auth'])
+    ->only(['show', 'create', 'store']);
 
 // Route::resource('restaurants', App\Http\Controllers\RestaurantController::class)
 //     ->except(['create', 'store', 'edit', 'update', 'destroy']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';

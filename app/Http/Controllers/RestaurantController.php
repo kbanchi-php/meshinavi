@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
@@ -43,5 +44,48 @@ class RestaurantController extends Controller
     {
         $zoom = 15;
         return view('restaurants.show', compact('restaurant', 'zoom'));
+    }
+
+    public function create()
+    {
+        $restaurant = new Restaurant();
+        $restaurant->latitude = 35.658584;;
+        $restaurant->longitude = 139.7454316;
+        $zoom = 15;
+        $categories = Category::all();
+        $data = [
+            'restaurant' => $restaurant,
+            'zoom' => $zoom,
+            'categories' => $categories,
+        ];
+        return view('restaurants.create', $data);
+    }
+
+    public function store(Request $request)
+    {
+
+        $request->validate([
+            'name' => 'required', 'address' => 'required', 'opentime' => 'required',
+        ]);
+
+        $path = $request->file('image')->store('restaurant_image', 'admin');
+
+        $restaurant = new Restaurant();
+
+        $restaurant->name = $request->name;
+        $restaurant->name_kana = $request->name_kana;
+        $restaurant->address = $request->address;
+        $restaurant->opentime = $request->opentime;
+        $restaurant->holiday = $request->holiday;
+        $restaurant->note = $request->note;
+        $restaurant->pr_short = $request->pr_short;
+        $restaurant->pr_long = $request->pr_long;
+        $restaurant->img_path = $path;
+        $restaurant->latitude = $request->latitude;
+        $restaurant->longitude = $request->longitude;
+
+        $restaurant->save();
+
+        return redirect()->route('restaurants.index');
     }
 }

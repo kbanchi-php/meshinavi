@@ -13,10 +13,9 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" mechod="GET" action="{{ route('restaurants.index') }}">
-            <input class="form-control mr-sm-2" type="search" name="category" placeholder="カテゴリー"
-                value="{{ old('category') }}">
-            <input class="form-control mr-sm-2" type="search" name="name" placeholder="お店の名前"
-                value="{{ old('name') }}">
+            <a class="btn btn-outline-primary my-2 my-sm-0 mr-2" href="{{ route('restaurants.create') }}">New</a>
+            <input class="form-control mr-sm-2" type="search" name="category" placeholder="カテゴリー">
+            <input class="form-control mr-sm-2" type="search" name="name" placeholder="お店の名前">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
